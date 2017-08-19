@@ -1,0 +1,21 @@
+{
+  "name": "whatsapp-jsdom",
+  "version": "1.0.0",
+  "description": "JSDOM implementation to use Whatsapp Web.",
+  "main": "initiate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "WhatsApp",
+    "JSDOM",
+    "Web",
+    "API"
+  ],
+  "author": "Rekthardt",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^11.1.0",
+    "request": "^2.81.0"
+  }
+}
