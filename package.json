@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "jsdom": "^11.1.0",
+    "node-horseman": "^3.3.0",
     "request": "^2.81.0"
   }
 }

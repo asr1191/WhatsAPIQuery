@@ -4,13 +4,16 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 let doc;
-url = "http://web.whatsapp.com";
+wsurl = "http://web.whatsapp.com";
 
-request(url, (err,res,html)=>{
+request({url:wsurl,
+         headers:{'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'}
+        }, (err,res,html)=>{
     if(!err){
 
         console.log(html);
             doc = new JSDOM(html, {
+            url:"https://web.whatsapp.com",
             runScripts:"dangerously",
             resources:"usable"
         });
