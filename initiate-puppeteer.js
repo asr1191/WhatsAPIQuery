@@ -15,7 +15,10 @@ const puppeteer = require('puppeteer');
   await page.waitFor('.qrcode');
   await page.waitFor(4000);
 
-  await page.screenshot({path: 'example.png'});
-
+  await page.screenshot({path: 'qrcode.png'});
+  console.log('screenshot','screenshot taken use phone to authenticate.');
+  await page.waitFor(20000);
+  console.log('screenshot','waited 20 seconds, taking another screenshot');
+  await page.screenshot({path: 'deck.png'})
   browser.close();
 })();
