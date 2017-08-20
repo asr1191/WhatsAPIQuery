@@ -18,6 +18,10 @@
     "jsdom": "^11.1.0",
     "node-horseman": "^3.3.0",
     "phantomjs-prebuilt": "^2.1.15",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "zombie": "^5.0.7"
+  },
+  "devDependencies": {
+    "zombie": "^5.0.7"
   }
 }
