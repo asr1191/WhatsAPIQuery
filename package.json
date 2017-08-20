@@ -1,7 +1,7 @@
 {
-  "name": "whatsapp-jsdom",
+  "name": "ww-headless-access",
   "version": "1.0.0",
-  "description": "JSDOM implementation to use Whatsapp Web.",
+  "description": "Chromium headless implementation to use Whatsapp Web.",
   "main": "initiate.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

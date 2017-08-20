@@ -13,12 +13,12 @@ const puppeteer = require('puppeteer');
                     });
   await page.goto('https://web.whatsapp.com');
   await page.waitFor('.qrcode');
-  await page.waitFor(4000);
+  await page.waitFor(7000);
 
   await page.screenshot({path: 'qrcode.png'});
-  console.log('screenshot','screenshot taken use phone to authenticate.');
-  await page.waitFor(20000);
-  console.log('screenshot','waited 20 seconds, taking another screenshot');
+  console.log('SCREENSHOT','shot saved to qrcode.png, use phone to authenticate.');
+  await page.waitFor(60000);
+  console.log('SCREENSHOT','waited 20 seconds, taking another shot, saved to deck.png');
   await page.screenshot({path: 'deck.png'})
   browser.close();
 })();
