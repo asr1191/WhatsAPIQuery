@@ -14,7 +14,8 @@ if (process.argv.length != 3){
     headless: true
   });
   const page = await browser.newPage();
-  
+  let pagePP = await browser.newPage();
+
   await page.emulate({ 
     viewport:{
       width:1920,
@@ -31,21 +32,22 @@ if (process.argv.length != 3){
   await page.waitFor('.icon-logo');
   //await page.waitFor(10000);
 
-  await page.screenshot({path: 'qrcode.png'});
+  await page.screenshot({path: './images/qrcode.png'});
   console.log('SCREENSHOT','shot saved to qrcode.png, use phone to authenticate.');
 
   await page.waitFor('.intro-image');
   await page.waitFor(4000);
 
   console.log('SCREENSHOT','taking another shot, saved to deck.png');
-  await page.screenshot({path: 'deck.png'})
+  await page.screenshot({path: './images/deck.png'})
 
   imgSRC = '';
 
   page.on('console',(...args)=>{
-    console.log("[Inner Console]",args[0],args[1]);
+    console.log("[Inner Console]",args[0],args[1]); 
     if(args[0]=='QUERY'){
       imgSRC = args[1];
+      var p = await browser.newPage();
     }
   });
 
@@ -58,7 +60,7 @@ if (process.argv.length != 3){
   await page.waitFor(10000);
   
   console.log("DEBUG", "imgSRC: " + imgSRC );
-  request(imgSRC).pipe(fs.createWriteStream( process.argv[2] + '.jpg'))
+  //request(imgSRC).pipe(fs.createWriteStream( './images/query/' + process.argv[2] + '.jpg'));
 
   page.waitFor("5000")
 
