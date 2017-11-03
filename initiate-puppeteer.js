@@ -14,7 +14,7 @@ if (process.argv.length != 3){
     headless: true
   });
   const page = await browser.newPage();
-  let pagePP = await browser.newPage();
+  //let pagePP = await browser.newPage();
 
   await page.emulate({ 
     viewport:{
@@ -27,9 +27,9 @@ if (process.argv.length != 3){
 
   
   await page.goto('https://web.whatsapp.com',{
-    timeout:45000
+    timeout:60000
   });
-  await page.waitFor('.icon-logo');
+  await page.waitFor('.qrcode-logo');
   //await page.waitFor(10000);
 
   await page.screenshot({path: './images/qrcode.png'});
@@ -47,22 +47,26 @@ if (process.argv.length != 3){
     console.log("[Inner Console]",args[0],args[1]); 
     if(args[0]=='QUERY'){
       imgSRC = args[1];
-      var p = await browser.newPage();
     }
   });
 
   await page.evaluate((nr)=>{
     console.log("DEBUG","Inside evaluate()");
-    Store.ProfilePicThumb.find(nr + '@c.us').then((d)=>{console.log('QUERY',d.img);});
+    Store.ProfilePicThumb.find(nr + '@c.us').then((d)=>{console.log('QUERY',d.imgFull);});
+    Store.Wap.statusFind(nr + '@c.us').then((d)=>{console.log('QUERY_STATUS',d.status);});
   },process.argv[2]);
 
   console.log("PROGRESS","waiting for 10 seconds")
   await page.waitFor(10000);
   
   console.log("DEBUG", "imgSRC: " + imgSRC );
+
+  let wwcookies = await page.cookies().catch((e)=>{console.log('COOKIES REJECTED',e)});
+  console.log('COOKIES',wwcookies[0]);
+  console.log('COOKIES',wwcookies[1]);
   //request(imgSRC).pipe(fs.createWriteStream( './images/query/' + process.argv[2] + '.jpg'));
 
-  page.waitFor("5000")
+  await page.waitFor("5000")
 
   browser.close();
 })();
